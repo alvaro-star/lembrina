@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.api.alvaro.lembrina.dtos.ConteudoDto;
 import com.api.alvaro.lembrina.models.ConteudoModel;
 import com.api.alvaro.lembrina.repositories.ConteudoRepository;
 
@@ -34,5 +35,12 @@ public class ConteudoService {
 	@Transactional
 	public void delete(ConteudoModel conteudoModel) {
 		conteudoRepository.delete(conteudoModel);
+	}
+	
+	public ConteudoModel dtoToModel(ConteudoDto conteudoDto) {
+		var conteudoModel = new ConteudoModel();
+		conteudoModel.setNome(conteudoDto.getNome());
+		conteudoModel.setDescricao(conteudoDto.getDescricao());
+		return conteudoModel;
 	}
 }

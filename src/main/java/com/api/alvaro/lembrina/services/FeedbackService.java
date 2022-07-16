@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.api.alvaro.lembrina.dtos.FeedbackDto;
 import com.api.alvaro.lembrina.models.FeedbackModel;
 import com.api.alvaro.lembrina.repositories.FeedbackRepository;
 
@@ -34,6 +35,12 @@ public class FeedbackService {
 	@Transactional
 	public void delete(FeedbackModel feedbackModel) {
 		feedbackRepository.delete(feedbackModel);
+	}
+	
+	public FeedbackModel dtoToModel(FeedbackDto feedbackDto) {
+		var feedbackModel = new FeedbackModel();
+		feedbackModel.setDescricao(feedbackDto.getDescricao());
+		return feedbackModel;
 	}
 	
 }

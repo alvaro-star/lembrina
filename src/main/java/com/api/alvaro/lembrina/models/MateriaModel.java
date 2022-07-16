@@ -79,6 +79,10 @@ public class MateriaModel implements Serializable{
 		this.usuarios.add(usuarioModel);
 	}
 	
+	public void removeUser(UsuarioModel usuarioModel) {
+		this.usuarios.remove(usuarioModel);
+	}
+	
 	
 	
 }

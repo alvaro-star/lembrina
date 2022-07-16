@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.api.alvaro.lembrina.dtos.ArquivoDto;
 import com.api.alvaro.lembrina.models.ArquivoModel;
 import com.api.alvaro.lembrina.repositories.ArquivoRepository;
 
@@ -35,5 +36,13 @@ public class ArquivoService {
 	public void delete(ArquivoModel arquivoModel) {
 		arquivoRepository.delete(arquivoModel);
 	}
+	
+	public ArquivoModel dtoToModel(ArquivoDto arquivoDto) {
+		var arquivoModel = new ArquivoModel();
+		arquivoModel.setLocalArquivo(arquivoDto.getLocalArquivo());
+		arquivoModel.setNome(arquivoDto.getNome());
+		return arquivoModel;
+	}
+	
 	
 }
