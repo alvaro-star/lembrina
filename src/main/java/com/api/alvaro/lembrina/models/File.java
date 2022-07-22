@@ -1,19 +1,19 @@
 package com.api.alvaro.lembrina.models;
 
 public class File {
-	private String nome;
+	private String name;
 	private String url;
 	
-	public File(String nome, String url) {
+	public File(String name, String url) {
 		super();
-		this.nome = nome;
+		this.name = name;
 		this.url = url;
 	}
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getUrl() {
 		return url;
@@ -21,6 +21,5 @@ public class File {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
 	
 }

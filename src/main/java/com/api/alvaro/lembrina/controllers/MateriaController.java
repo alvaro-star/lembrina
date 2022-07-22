@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import com.api.alvaro.lembrina.services.UsuarioService;
 
 @RestController
 @RequestMapping("/materias")
+@CrossOrigin(origins = "*")
 public class MateriaController {
 
 	@Autowired
@@ -111,11 +113,20 @@ public class MateriaController {
 	
 	
 	@GetMapping("/{id}/usuarios")
-    public ResponseEntity<Object> getMateriaComFestas(@PathVariable(value = "id") Integer id){
+    public ResponseEntity<Object> getMateriaUsuarios(@PathVariable(value = "id") Integer id){
 		Optional<MateriaModel> materiaModelOptional = materiaService.findById(id);
 		if(!materiaModelOptional.isPresent()) {
         	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Object not found");
         }
     	return ResponseEntity.status(HttpStatus.OK).body(materiaModelOptional.get().getUsuarios());
+    }
+	
+	@GetMapping("/{id}/conteudos")
+	public ResponseEntity<Object> getMateriaConteudo(@PathVariable(value = "id") Integer id){
+		Optional<MateriaModel> materiaModelOptional = materiaService.findById(id);
+		if(!materiaModelOptional.isPresent()) {
+        	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Object not found");
+        }
+    	return ResponseEntity.status(HttpStatus.OK).body(materiaModelOptional.get().getConteudos());
     }
 }
