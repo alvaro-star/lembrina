@@ -1,11 +1,11 @@
-package com.api.alvaro.lembrina.models;
+package com.api.alvaro.lembrina.helpers;
 
 public class File {
+	
 	private String name;
 	private String url;
 	
-	public File(String name, String url) {
-		super();
+	public void prencher(String name, String url) {
 		this.name = name;
 		this.url = url;
 	}
@@ -22,4 +22,6 @@ public class File {
 		this.url = url;
 	}
 	
+	
+
 }

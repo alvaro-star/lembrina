@@ -30,7 +30,7 @@ import com.api.alvaro.lembrina.services.ConteudoService;
 import com.api.alvaro.lembrina.services.FeedbackService;
 
 @RestController
-@RequestMapping("/feedBacks")
+@RequestMapping("/feedbacks")
 @CrossOrigin(origins = "*")
 public class FeedbackController {
 
