@@ -69,7 +69,8 @@ public class ArquivoService {
 	
 	public ArquivoModel dtoToModel(ArquivoDto arquivoDto) {
 		var arquivoModel = new ArquivoModel();
-		arquivoModel.setLocalArquivo(arquivoDto.getLocalArquivo());
+		arquivoModel.setNomeLocal(arquivoDto.getNomeLocal());
+		arquivoModel.setUrl(arquivoDto.getUrl());
 		arquivoModel.setNome(arquivoDto.getNome());
 		return arquivoModel;
 	}

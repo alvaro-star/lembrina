@@ -35,7 +35,7 @@ public class FileController {
 			var url = fileServiceAPI.getUrl(file.getName());
 			file.setUrl(url);
 		}
-		
+		 
 		return ResponseEntity.status(HttpStatus.OK).body(arquivos);
 	}
 

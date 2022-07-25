@@ -29,9 +29,11 @@ public class ArquivoModel implements Serializable{
 	@Column(nullable = false, length = 70)
 	private String nome;
 	@Column(nullable = false)
+	private String nomeLocal;
+	@Column(nullable = false)
 	private LocalDateTime criado_em;
 	@Column(nullable = false, length = 120)
-	private String localArquivo;
+	private String url;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "fk_idtb_conteudo")
@@ -56,17 +58,29 @@ public class ArquivoModel implements Serializable{
 	public void setCriado_em(LocalDateTime criado_em) {
 		this.criado_em = criado_em;
 	}
-	public String getLocalArquivo() {
-		return localArquivo;
-	}
-	public void setLocalArquivo(String localArquivo) {
-		this.localArquivo = localArquivo;
-	}
+
+	
 	public ConteudoModel getConteudo() {
 		return conteudo;
 	}
 	public void setConteudo(ConteudoModel conteudo) {
 		this.conteudo = conteudo;
+	}
+
+	public String getNomeLocal() {
+		return nomeLocal;
+	}
+
+	public void setNomeLocal(String nomeLocal) {
+		this.nomeLocal = nomeLocal;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }
