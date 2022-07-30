@@ -1,20 +1,24 @@
 package com.api.alvaro.lembrina.dtos;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class UsuarioDto {
 	
-	@NotBlank
+	@NotBlank(message = "O campo nome é obrigatorio")
+	@Size(min = 5, message = "O numero de caracterews é de 5 caracteres")
 	private String nome;
-	@NotBlank
+	@Email(message = "Insira um email valido")
+	@NotBlank(message = "O campo email é obrigatorio")
 	private String email;
-	@NotBlank
+	@NotBlank(message = "O campo campus é obrigatorio")
 	private String campus;
-	@NotBlank
+	@NotBlank(message = "O campo funcao é obrigatorio")
 	private String funcao;
-	@NotBlank
+	@NotBlank(message = "O campo cpf é obrigatorio")
 	private String cpf;
-	@NotBlank
+	@NotBlank(message = "O campo senha é obrigatorio")
 	private String senha;
 	
 	

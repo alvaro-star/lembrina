@@ -4,6 +4,7 @@ public class ConteudoDto {
 
 	private String nome;
 	private String descricao;
+	
 	private Integer idMateria;
 	
 	public String getNome() {

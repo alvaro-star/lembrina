@@ -6,6 +6,12 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.api.alvaro.lembrina.dtos.ArquivoDto;
+import com.api.alvaro.lembrina.models.ArquivoModel;
+import com.api.alvaro.lembrina.models.ConteudoModel;
+import com.api.alvaro.lembrina.services.ArquivoService;
+import com.api.alvaro.lembrina.services.ConteudoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,12 +28,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.api.alvaro.lembrina.dtos.ArquivoDto;
-import com.api.alvaro.lembrina.models.ArquivoModel;
-import com.api.alvaro.lembrina.models.ConteudoModel;
-import com.api.alvaro.lembrina.services.ArquivoService;
-import com.api.alvaro.lembrina.services.ConteudoService;
 
 @RestController
 @RequestMapping("/arquivos")
