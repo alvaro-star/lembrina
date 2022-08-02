@@ -1,4 +1,4 @@
-package com.api.alvaro.lembrina.configurations.Security;
+package com.api.alvaro.lembrina.configurations.security;
 /*
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

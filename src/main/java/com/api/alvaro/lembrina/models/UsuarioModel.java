@@ -45,10 +45,10 @@ public class UsuarioModel implements UserDetails, Serializable{
 	
 	@ManyToMany
 	@JsonBackReference
-	@JoinTable(name = "tb_usuario_materia", 
+	@JoinTable(name = "tb_usuario_role", 
 			joinColumns = @JoinColumn(name = "idtb_usuario", referencedColumnName = "idtb_usuario"), 
 			inverseJoinColumns = @JoinColumn(name = "idtb_role", referencedColumnName = "idtb_role"))
-	List<RoleModel> roles;
+	private List<RoleModel> roles = new ArrayList<>();
 	
 	@ManyToMany
 	@JsonBackReference
@@ -134,25 +134,21 @@ public class UsuarioModel implements UserDetails, Serializable{
 	
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 }

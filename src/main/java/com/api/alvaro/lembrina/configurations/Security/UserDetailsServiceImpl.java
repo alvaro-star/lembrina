@@ -1,4 +1,4 @@
-package com.api.alvaro.lembrina.configurations.Security;
+package com.api.alvaro.lembrina.configurations.security;
 
 import javax.transaction.Transactional;
 
