@@ -1,8 +1,12 @@
 package com.api.alvaro.lembrina.dtos;
 
+import javax.validation.constraints.NotBlank;
+
 public class MateriaDto {
 
+	@NotBlank(message = "Insira um nome")
 	private String nome;
+	@NotBlank(message = "Insira uma descricao")
 	private String descricao;
 	
 	public String getNome() {

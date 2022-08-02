@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.alvaro.lembrina.dtos.MateriaDto;
+import com.api.alvaro.lembrina.helpers.Erros;
 import com.api.alvaro.lembrina.models.MateriaModel;
 import com.api.alvaro.lembrina.models.UsuarioModel;
 import com.api.alvaro.lembrina.services.MateriaService;
@@ -28,13 +30,14 @@ import com.api.alvaro.lembrina.services.UsuarioService;
 @RestController
 @RequestMapping("/materias")
 @CrossOrigin(origins = "*")
-public class MateriaController {
+public class MateriaController extends Erros{
 
 	@Autowired
 	private MateriaService materiaService;
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping
     public ResponseEntity<Object> criarMateria(@RequestBody @Valid MateriaDto materiaDto){
         var materiaModel = new MateriaModel();
@@ -42,6 +45,7 @@ public class MateriaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(materiaService.save(materiaModel));
     }
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER', 'ROLE_STUDENT')")
 	@GetMapping
 	public ResponseEntity<List<MateriaModel>> getAllMaterias(){
 		return ResponseEntity.status(HttpStatus.OK).body(materiaService.findAll());
@@ -129,4 +133,5 @@ public class MateriaController {
         }
     	return ResponseEntity.status(HttpStatus.OK).body(materiaModelOptional.get().getConteudos());
     }
+	
 }

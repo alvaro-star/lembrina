@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.alvaro.lembrina.dtos.ConteudoDto;
+import com.api.alvaro.lembrina.helpers.Erros;
 import com.api.alvaro.lembrina.models.ConteudoModel;
 import com.api.alvaro.lembrina.models.MateriaModel;
 import com.api.alvaro.lembrina.services.ConteudoService;
@@ -30,7 +31,7 @@ import com.api.alvaro.lembrina.services.MateriaService;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/conteudos")
-public class ConteudoController {
+public class ConteudoController extends Erros{
 
 	@Autowired
 	private ConteudoService conteudoService;

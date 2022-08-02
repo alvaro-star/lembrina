@@ -1,8 +1,13 @@
 package com.api.alvaro.lembrina.dtos;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class FeedbackDto {
 
+	@NotBlank(message = "Insira uma descricao")
 	private String descricao;
+	@NotNull(message = "Escolha um conteudo Valido")
 	private Integer idConteudo;
 	
 	public String getDescricao() {

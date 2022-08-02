@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.alvaro.lembrina.dtos.FeedbackDto;
+import com.api.alvaro.lembrina.helpers.Erros;
 import com.api.alvaro.lembrina.models.ConteudoModel;
 import com.api.alvaro.lembrina.models.FeedbackModel;
 import com.api.alvaro.lembrina.services.ConteudoService;
@@ -32,7 +33,7 @@ import com.api.alvaro.lembrina.services.FeedbackService;
 @RestController
 @RequestMapping("/feedbacks")
 @CrossOrigin(origins = "*")
-public class FeedbackController {
+public class FeedbackController extends Erros{
 
 	@Autowired
 	private FeedbackService feedbackService;

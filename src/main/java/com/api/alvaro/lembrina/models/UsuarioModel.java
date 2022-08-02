@@ -2,6 +2,7 @@ package com.api.alvaro.lembrina.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,11 +15,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "tb_usuario")
-public class UsuarioModel implements Serializable{
+public class UsuarioModel implements UserDetails, Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +32,7 @@ public class UsuarioModel implements Serializable{
 	private Integer id;
 	@Column(nullable = false, length = 100)
 	private String nome;
-	@Column(nullable = false, length = 70)
+	@Column(nullable = false, length = 70, unique = true)
 	private String email;
 	@Column(nullable = false, length = 70)
 	private String campus;
@@ -38,6 +42,13 @@ public class UsuarioModel implements Serializable{
 	private String cpf;
 	@Column(nullable = false, length = 50)
 	private String senha;
+	
+	@ManyToMany
+	@JsonBackReference
+	@JoinTable(name = "tb_usuario_materia", 
+			joinColumns = @JoinColumn(name = "idtb_usuario", referencedColumnName = "idtb_usuario"), 
+			inverseJoinColumns = @JoinColumn(name = "idtb_role", referencedColumnName = "idtb_role"))
+	List<RoleModel> roles;
 	
 	@ManyToMany
 	@JsonBackReference
@@ -96,5 +107,52 @@ public class UsuarioModel implements Serializable{
 	}
 	public void setMaterias(List<MateriaModel> materias) {
 		this.materias = materias;
+	}
+	
+	
+	public List<RoleModel> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<RoleModel> roles) {
+		this.roles = roles;
+	}
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.roles;
+	}
+	
+	@Override
+	public String getPassword() {
+		return this.senha;
+	}
+	
+	@Override
+	public String getUsername() {
+		return this.email;
+	}
+	
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

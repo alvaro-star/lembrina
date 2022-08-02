@@ -1,5 +1,5 @@
 package com.api.alvaro.lembrina.configurations.Security;
-
+/*
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,3 +22,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     }
     
 }
+*/

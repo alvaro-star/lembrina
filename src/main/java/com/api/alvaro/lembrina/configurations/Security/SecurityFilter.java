@@ -1,5 +1,5 @@
 package com.api.alvaro.lembrina.configurations.Security;
-
+/*
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -20,3 +20,4 @@ public class SecurityFilter extends OncePerRequestFilter{
     }
     
 }
+*/
