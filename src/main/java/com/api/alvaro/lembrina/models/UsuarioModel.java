@@ -43,13 +43,14 @@ public class UsuarioModel implements UserDetails, Serializable{
 	@Column(nullable = false, length = 50)
 	private String senha;
 	
+	/*
 	@ManyToMany
 	@JsonBackReference
 	@JoinTable(name = "tb_usuario_role", 
 			joinColumns = @JoinColumn(name = "idtb_usuario", referencedColumnName = "idtb_usuario"), 
 			inverseJoinColumns = @JoinColumn(name = "idtb_role", referencedColumnName = "idtb_role"))
 	private List<RoleModel> roles = new ArrayList<>();
-	
+	*/
 	@ManyToMany
 	@JsonBackReference
 	@JoinTable(name = "tb_usuario_materia", 
@@ -110,16 +111,9 @@ public class UsuarioModel implements UserDetails, Serializable{
 	}
 	
 	
-	public List<RoleModel> getRoles() {
-		return roles;
-	}
-	public void setRoles(List<RoleModel> roles) {
-		this.roles = roles;
-	}
-	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.roles;
+		return null;
 	}
 	
 	@Override
